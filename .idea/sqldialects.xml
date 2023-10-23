@@ -2,6 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/lab/blueprint_query/route.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/lab/blueprint_query/sql/query_light_1.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

@@ -2,13 +2,28 @@ import os
 from flask import Blueprint, render_template, request, current_app
 from lab.work_with_db import select_dict
 from lab.sql_provider import SQLProvider
+import lab.view_data as view_data
 
 blueprint_query = Blueprint('bp_query', __name__, template_folder='templates')
 provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
-@blueprint_query.route('/query_menu')
+
+@blueprint_query.route('/query_menu', methods=['GET', 'POST'])
 def query_menu():
-    return render_template('query_menu.html')
+    if request.method == 'GET':
+        table_items = view_data.query_menu_table_items
+        return render_template('query_menu.html', table_items=table_items)
+    else:
+        query_name = request.form.get('query_name')
+        return handle_query_post_request(query_name)
+
+
+def handle_query_post_request(query_name: str):
+    sql = provider.get(query_name + ".sql")
+    answer = select_dict(current_app.config['db_config'], sql)
+
+    return render_template('dynamic.html', table_items=answer, back_site='bp_query.query_menu')
+
 
 @blueprint_query.route('/cat_price', methods=['GET', 'POST'])
 def query_index_cat_price():

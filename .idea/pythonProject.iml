@@ -8,11 +8,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/sem2/templates" />
-        <option value="$MODULE_DIR$/sem1/templates" />
-        <option value="$MODULE_DIR$/sem3/templates" />
+        <option value="$MODULE_DIR$/lab/blueprint_query/templates" />
+        <option value="$MODULE_DIR$/lab/templates" />
       </list>
     </option>
   </component>

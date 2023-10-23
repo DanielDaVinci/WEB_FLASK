@@ -3,23 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Поиск товаров</title>
-    <link href="{{url_for('static', filename='static.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{url_for('static', filename='bootstrap.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='static.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h2> Меню выбора поиска товаров </h2>
+            <h2>Меню выбора запросов аэропорта</h2>
         </div>
         <div class="modal-body">
-            <form action="{{ url_for('bp_query.query_index_cat_price') }}" target="_self">
-                <button class="btn btn-primary">Поиск по категории и минимальной цене товара</button>
-            </form>
-            <br/>
-             <form action="{{ url_for('bp_query.query_index_name') }}" target="_self">
-                <button class="btn btn-primary">Поиск по наименованию и максимальной цене товара</button>
-            </form>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col" width="50">#</th>
+                    <th scope="col">Легкие запросы</th>
+                    <th scope="col">Сложные запросы</th>
+                </tr>
+                </thead>
+                <form id="query" action="" method="post"></form>
+                <tbody>
+                {% for row in table_items %}
+                    <tr>
+                        <th scope="row">{{ table_items.index(row) + 1 }}</th>
+                        <td>
+                            <button class="btn btn-primary" type="submit" name="query_name"
+                                    value="{{ row[0]["query_name"] }}" form="query">
+                                {{ row[0]["query_display_name"] }}
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" type="submit" name="query_name"
+                                    value="{{ row[1]["query_name"] }}" form="query">
+                                {{ row[1]["query_display_name"] }}
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
         <div class="modal-footer">
             <form action="/">

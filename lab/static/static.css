@@ -22,3 +22,13 @@ table {
     margin-right: auto;
     margin-left: auto;
 }
+
+th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}

@@ -3,34 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>supermarket</title>
-    <link href="{{url_for('static', filename='static.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{url_for('static', filename='bootstrap.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='static.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="modal-dialog">
-    <div class="modal-content">
+<div class="modal-dialog" style="width: 750px">
+    <div class="modal-content col-auto">
         <div class="modal-header">
-            <h2>Найденные товары</h2>
+            <h2>Результат запроса</h2>
         </div>
         <div class="modal-body">
-            <table class="table  table-hover">
+            {% if table_items %}
+            <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Название</th>
-                    <th scope="col">Единицы измерения</th>
-                    <th scope="col">Цена</th>
+                    {% for column_name in table_items[0].keys() %}
+                        <th scope="col">{{ column_name }}</th>
+                    {% endfor %}
                 </tr>
                 </thead>
                 <tbody>
-                {% for product in products %}
-                <tr>
-                    <td>{{product['prod_name']}}</td>
-                    <td>{{product['prod_measure']}}</td>
-                    <td>{{product['prod_price']}}</td>
-                </tr>
+                {% for item in table_items %}
+                    <tr>
+                        {% for column_name in item.keys() %}
+                            <td>{{ item[column_name] }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>
+            {% else %}
+                <h1>NOT RESPONSE</h1>
+            {% endif %}
         </div>
         <div class="modal-footer">
             <form action="{{ url_for(back_site) }}">

@@ -7,14 +7,14 @@
     <link href="{{url_for('static', filename='bootstrap.css')}}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="modal-dialog">
+<div class="modal-dialog" style="width: 500px">
     <div class="modal-content">
         <div class="modal-header d-flex align-content-center">
-            <h2> Супермаркет </h2>
+            <h2>Аэропорт</h2>
         </div>
         <div class="modal-footer">
             <form action="{{ url_for('bp_query.query_menu') }}" target="_self">
-                <button class="btn btn-primary">Найти товар</button>
+                <button class="btn btn-primary">Работа с запросами</button>
             </form>
         </div>
     </div>
