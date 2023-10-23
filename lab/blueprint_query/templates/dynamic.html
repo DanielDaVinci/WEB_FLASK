@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>supermarket</title>
+    <link href="{{url_for('static', filename='static.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{url_for('static', filename='bootstrap.css')}}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Найденные товары</h2>
+        </div>
+        <div class="modal-body">
+            <table class="table  table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Единицы измерения</th>
+                    <th scope="col">Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{product['prod_name']}}</td>
+                    <td>{{product['prod_measure']}}</td>
+                    <td>{{product['prod_price']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <form action="{{ url_for(back_site) }}">
+                <button class="btn btn-outline-dark">Вернуться назад</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

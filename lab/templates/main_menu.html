@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главное Меню</title>
+    <link href="{{url_for('static', filename='static.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{url_for('static', filename='bootstrap.css')}}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header d-flex align-content-center">
+            <h2> Супермаркет </h2>
+        </div>
+        <div class="modal-footer">
+            <form action="{{ url_for('bp_query.query_menu') }}" target="_self">
+                <button class="btn btn-primary">Найти товар</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

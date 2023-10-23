@@ -1,0 +1,24 @@
+div {
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+}
+
+li {
+    text-align: left;
+    color: green;
+}
+
+/*h2 {*/
+/*    font-family: Veranda, serif;*/
+/*    font-size: 20pt;*/
+/*    font-weight: bold;*/
+/*    color: black;*/
+/*}*/
+
+table {
+    margin-right: auto;
+    margin-left: auto;
+}
